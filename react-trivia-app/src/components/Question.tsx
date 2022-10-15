@@ -2,11 +2,11 @@ import '../css/Trivia.css';
 import {parseToHtml} from '../utils/Utils'
 
 import Answer from './Answer';
-export default function Question(props){
+export default function Question(props: any){
 
     const answersArray = props.item.answers
 
-    const answersElements = answersArray.map(ans => 
+    const answersElements = answersArray.map((ans: any) => 
         <Answer 
             key={ans.id}
             gameOver={props.gameOver} 

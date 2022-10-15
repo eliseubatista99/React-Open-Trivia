@@ -1,7 +1,8 @@
+import React from 'react';
 import './css/App.css';
-import Trivia from './components/Trivia'
-import BlobYellow from './images/blob-yellow.png'
-import BlobBlue from './images/blob-blue.png'
+import Trivia from './components/Trivia';
+import BlobYellow from './images/blob-yellow.png';
+import BlobBlue from './images/blob-blue.png';
 
 function App() {
   return (

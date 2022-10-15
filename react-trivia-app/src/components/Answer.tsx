@@ -1,7 +1,7 @@
 import '../css/Trivia.css'
 import { parseToHtml } from '../utils/Utils'
 
-export default function Answer(props){
+export default function Answer(props: any){
     const normalStyle = {
         backgroundColor: "#FFFFFF"
     }

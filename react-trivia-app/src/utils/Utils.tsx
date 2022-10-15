@@ -1,4 +1,4 @@
-export function logQuestion(question){
+export function logQuestion(question: any){
     console.log(`{
         category: ${question.category},
         type: ${question.type},
@@ -9,14 +9,14 @@ export function logQuestion(question){
     }`)
 }
 
-export function parseToHtml(text){
+export function parseToHtml(text: string){
     const parser = new DOMParser();
     const elem = parser.parseFromString(text, 'text/html');
 
     return elem.body.innerText;
 }
 
-export function shuffleArray(arrayToShuffle){
+export function shuffleArray(arrayToShuffle: Array<any>){
     let newArray = [...arrayToShuffle]
 
     for(let i=0;i<newArray.length;i++){
@@ -29,4 +29,4 @@ export function shuffleArray(arrayToShuffle){
     return newArray;
 }
 
-export const sleep = millis => new Promise(r => setTimeout(r, millis))
+export const sleep = (millis : number) => new Promise(r => setTimeout(r, millis))

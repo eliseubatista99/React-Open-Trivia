@@ -14,9 +14,9 @@ async function fecthDataFromApi(){
     //const success = jsonResponse.response_code;
     const results = jsonResponse.results;
 
-    const questions = results.map(result => {
+    const questions = results.map((result: any) => {
 
-        let answers = result.incorrect_answers.map(ans => 
+        let answers = result.incorrect_answers.map((ans: any) => 
         { 
             return{
                 id: nanoid(),
@@ -52,8 +52,8 @@ async function fecthDataFromApi(){
 
 export default function Trivia(){
 
-    function onAnswerSelected(questionID, answerID){        
-        setQuestions(prevQuestions => {
+    function onAnswerSelected(questionID: string, answerID: string){        
+        setQuestions((prevQuestions: any) => {
             const newQuestions = [...prevQuestions]
 
             //For each question
@@ -118,17 +118,17 @@ export default function Trivia(){
         setIsFetching(false);
     }
 
-    const [hasFecthedOnce, setHasFetchedOnce] = React.useState(false)
-    const [isFetching, setIsFetching] = React.useState(false)
-    const [questions, setQuestions] = React.useState([])
-    const [gameOver, setGameOver] = React.useState(false)
-    const [correctAnswers, setCorrectAnswers] = React.useState(0)
+    const [hasFecthedOnce, setHasFetchedOnce] = React.useState<boolean>(false)
+    const [isFetching, setIsFetching] = React.useState<boolean>(false)
+    const [questions, setQuestions] = React.useState<any>([])
+    const [gameOver, setGameOver] = React.useState<boolean>(false)
+    const [correctAnswers, setCorrectAnswers] = React.useState<number>(0)
 
     React.useEffect(() => function(){
         getNewQuestions()
     }, [])
 
-    const questionElements = questions.map(question => {
+    const questionElements = questions.map((question: any) => {
         return <Question key={question.id} gameOver={gameOver} item={question} onAnswerSelected={onAnswerSelected} />
     })
 
