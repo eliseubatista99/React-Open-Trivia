@@ -1,0 +1,47 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family: 'Inter', sans-serif;
+}
+
+body{
+  background-color: #1C1C1C;
+  padding: 50px;
+  overflow: hidden;
+}
+
+.App {
+  margin: auto;
+  position: relative;
+  width: 40vw;
+  height: 90vh;
+  text-align: center;
+  background-color: #F5F7FB;
+  overflow: hidden;
+  border-radius: 5px;
+  padding: 25px 0px 0px 0px;
+}
+
+#blob-yellow{
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+#blob-blue{
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+
+@media only screen and (max-width: 1080px) {
+  body {
+    padding: 10px 5px;
+  }
+
+  .App{
+    width: 95vw;
+    padding: 5px 0px 0px 0px;
+  }
+}
+

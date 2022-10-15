@@ -1,0 +1,15 @@
+{
+  "short_name": "React Trivia App",
+  "name": "React Trivia App",
+  "icons": [
+    {
+      "src": "./icons/icon-question-mark.png",
+      "type": "image/png",
+      "sizes": "64x64"
+    }
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#000000",
+  "background_color": "#ffffff"
+}
