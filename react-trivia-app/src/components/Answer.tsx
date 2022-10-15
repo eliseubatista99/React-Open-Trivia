@@ -1,7 +1,21 @@
 import '../css/Trivia.css'
 import { parseToHtml } from '../utils/Utils'
 
+import { AnswerData } from '../DataTypes';
+
 export default function Answer(props: any){
+
+    const {
+        gameOver, 
+        item, 
+        onAnswerSelected
+     } : {
+        gameOver: boolean,
+        item: AnswerData,
+        onAnswerSelected: any
+     } = props
+
+
     const normalStyle = {
         backgroundColor: "#FFFFFF"
     }
@@ -20,20 +34,20 @@ export default function Answer(props: any){
 
     let style = normalStyle;
 
-    if(props.gameOver){
-        if(props.item.isSelected){
-            style = props.item.isCorrect? correctStyle : incorrectStyle
+    if(gameOver){
+        if(item.isSelected){
+            style = item.isCorrect? correctStyle : incorrectStyle
         }else{
-            style = props.item.isCorrect? correctStyle : normalStyle
+            style = item.isCorrect? correctStyle : normalStyle
         }      
     }
     else{
-        style = props.item.isSelected? selectedStyle : normalStyle
+        style = item.isSelected? selectedStyle : normalStyle
     }
 
     return (
-        <div className="Trivia--answer" style={style} onClick={props.onAnswerSelected}>
-            <p>{parseToHtml(props.item.answer)}</p>
+        <div className="Trivia--answer" style={style} onClick={onAnswerSelected}>
+            <p>{parseToHtml(item.answer)}</p>
         </div>
     )
 }

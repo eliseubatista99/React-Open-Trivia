@@ -3,9 +3,12 @@ import '../css/Trivia.css';
 import React from "react"
 import { nanoid } from 'nanoid'
 import Question from './Question'
+import { QuestionData, AnswerData } from '../DataTypes';
 import {shuffleArray, sleep} from '../utils/Utils'
 
 import LoadingSpinner from './LoadingSpinner'
+
+
 
 
 async function fecthDataFromApi(){
@@ -14,9 +17,9 @@ async function fecthDataFromApi(){
     //const success = jsonResponse.response_code;
     const results = jsonResponse.results;
 
-    const questions = results.map((result: any) => {
+    const questions : QuestionData[] = results.map((result: any) => {
 
-        let answers = result.incorrect_answers.map((ans: any) => 
+        let answers : AnswerData[] = result.incorrect_answers.map((ans: any) => 
         { 
             return{
                 id: nanoid(),
@@ -53,7 +56,7 @@ async function fecthDataFromApi(){
 export default function Trivia(){
 
     function onAnswerSelected(questionID: string, answerID: string){        
-        setQuestions((prevQuestions: any) => {
+        setQuestions((prevQuestions: QuestionData[]) => {
             const newQuestions = [...prevQuestions]
 
             //For each question
@@ -120,7 +123,7 @@ export default function Trivia(){
 
     const [hasFecthedOnce, setHasFetchedOnce] = React.useState<boolean>(false)
     const [isFetching, setIsFetching] = React.useState<boolean>(false)
-    const [questions, setQuestions] = React.useState<any>([])
+    const [questions, setQuestions] = React.useState<QuestionData[]>([])
     const [gameOver, setGameOver] = React.useState<boolean>(false)
     const [correctAnswers, setCorrectAnswers] = React.useState<number>(0)
 
@@ -128,7 +131,7 @@ export default function Trivia(){
         getNewQuestions()
     }, [])
 
-    const questionElements = questions.map((question: any) => {
+    const questionElements = questions.map((question: QuestionData) => {
         return <Question key={question.id} gameOver={gameOver} item={question} onAnswerSelected={onAnswerSelected} />
     })
 

@@ -1,11 +1,12 @@
-export function logQuestion(question: any){
+import { QuestionData } from "../DataTypes";
+
+export function logQuestion(question: QuestionData){
     console.log(`{
         category: ${question.category},
         type: ${question.type},
         difficulty: ${question.difficulty},
         question: ${question.question},
-        correct_answer: ${question.correct_answer},
-        incorrect_answers: ${question.incorrect_answers},
+        answers: ${question.answers},
     }`)
 }
 
