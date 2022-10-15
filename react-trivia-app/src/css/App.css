@@ -41,6 +41,7 @@ body{
 
   .App{
     width: 95vw;
+    height: 80vh;
     padding: 5px 0px 0px 0px;
   }
 }
