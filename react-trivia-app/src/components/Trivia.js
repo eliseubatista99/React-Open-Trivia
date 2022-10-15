@@ -109,6 +109,7 @@ export default function Trivia(){
     }
 
     async function getNewQuestions(){
+        setHasFetchedOnce(true)
         setIsFetching(true);
         const result = await fecthDataFromApi();
         await sleep(1000)
@@ -117,6 +118,7 @@ export default function Trivia(){
         setIsFetching(false);
     }
 
+    const [hasFecthedOnce, setHasFetchedOnce] = React.useState(false)
     const [isFetching, setIsFetching] = React.useState(false)
     const [questions, setQuestions] = React.useState([])
     const [gameOver, setGameOver] = React.useState(false)
@@ -129,6 +131,14 @@ export default function Trivia(){
     const questionElements = questions.map(question => {
         return <Question key={question.id} gameOver={gameOver} item={question} onAnswerSelected={onAnswerSelected} />
     })
+
+    /*
+        On deployment, the use effect does not execute as soon as the component is rendered. We want to make sure a call to the
+        API is made as soon as the app starts
+    */
+    if(!hasFecthedOnce){
+        getNewQuestions()
+    }
 
     return(
         <div className="Trivia">
